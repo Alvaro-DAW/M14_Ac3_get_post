@@ -1,0 +1,220 @@
+@font-face {
+    font-family: 'Lato';
+    src: url(../fonts/Lato-Regular.ttf);
+  }
+/*
+
+202C39
+283845
+B8B08D
+F2D492
+F29559
+ 
+*/
+*{
+    
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+    font-family: 'Lato',sans-serif; 
+    
+}
+.showp{margin-top: 1rem;}
+
+html,body{
+   
+    height: 100%;
+    
+}
+body{
+   background-color: #202C39;
+   color: #B8B08D;
+    display: flex;
+    flex-direction: column;
+}
+.content{
+    max-width: 100vw;
+    flex: 1 0 auto;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   flex-wrap: wrap;
+}
+h1{
+    text-align: center;
+    padding: 2rem;
+    
+}
+nav{
+    position: sticky;
+    top:0;
+    display: flex;
+    justify-content: space-around;
+}
+a{
+    color: #F29559;
+   
+   
+}
+a:hover{
+    color: #f37a29;
+    
+}
+
+
+footer{
+    flex-shrink: 0;
+}
+
+.productos{
+    width: 100vw;
+   
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.card{
+    border: none;
+    max-width: 400px;
+    overflow: hidden;
+    margin: 3rem;
+}
+.foto{
+    min-width: 100px;
+    min-height: 100px;
+    width: 100%;
+    height: 100%;
+    transition-duration: 500ms;
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+      to { opacity: 1; }
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+      to { opacity: 1; }
+}
+ 
+.card>.card-body{
+    
+    font-weight: bold;
+    text-align: center;
+   
+    display:none;
+    color: #202C39;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    animation: fadeIn 500ms;
+    animation: fadeIn 1s;
+  
+}
+.card>.card-body>h5{
+    font-weight: bold;
+}
+
+.card:hover>.card-body{
+    display: block;
+    position: absolute;
+    
+   
+}
+.card:hover>.foto{
+    filter: blur(2px);
+    
+}
+
+/* 
+Generic Styling, for Desktops/Laptops 
+*/
+table { 
+   margin-top: 4rem;
+    max-width: 70vw;
+    width: 100%; 
+    border-collapse: collapse; 
+  }
+  /* Zebra striping */
+  tr:nth-of-type(odd) { 
+    background:  #B8B08D; 
+    color: #202C39;
+  }
+  th { 
+    background: #333; 
+    color: white; 
+    font-weight: bold; 
+  }
+  td, th { 
+    
+    text-align: center;
+    padding: 6px; 
+    border: 1px solid #ccc; 
+    
+  }
+  /* 
+Max width before this PARTICULAR table gets nasty
+This query will take effect for any screen smaller than 760px
+and also iPads specifically.
+*/
+@media 
+only screen and (max-width: 760px),
+(min-device-width: 768px) and (max-device-width: 1024px)  {
+
+	/* Force table to not be like tables anymore */
+	table, thead, tbody, th, td, tr { 
+		display: block; 
+	}
+	
+	/* Hide table headers (but not display: none;, for accessibility) */
+	thead tr { 
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+	
+	tr { border: 1px solid #ccc; }
+	
+	td { 
+        /* Behave  like a "row" */
+        text-align: center;
+		border: none;
+		border-bottom: 1px solid #eee; 
+		position: relative;
+	
+	}
+	
+	td:before { 
+		/* Now like a table header */
+		position: absolute;
+		/* Top/left values mimic padding */
+		top: 6px;
+		left: 6px;
+		width: 45%; 
+		padding-right: 10px; 
+		white-space: nowrap;
+	}
+}
+.cardbtn{
+    background-color: #202C39;
+    border-color: #2b4057;
+}
+.cardbtn:hover{
+    background-color: #131a22;
+    border-color: #314d6b;
+}
+#producte{
+    max-width: 60vw;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    
+}
+#producte div{
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 1rem;
+    text-align: center;
+    justify-content: space-between;
+}

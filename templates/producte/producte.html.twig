@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ title }}{% endblock %}
+{% block body %}
+        <h1>{{ title }}</h1>
+        <a href="{{ path('home') }}">&laquo; Torna</a>
+				<div id="form" style="margin-top: 20px">
+  	    	{{ form_start(form) }}
+		        	{{ form_widget(form,) }}
+		    {{ form_end(form) }}
+			
+			</div>
+
+			<script>
+			const divs=()=>{
+				let form=document.getElementById("form");
+				let divs=form.getElementsByTagName("div");
+				console.log(div)
+			}
+			</script>
+{% endblock %}

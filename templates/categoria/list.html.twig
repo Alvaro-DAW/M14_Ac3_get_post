@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Llistat de categoria{% endblock %}
+{% block body %}
+        <h1>Llistat de categoria</h1>
+
+        <a href="{{ path('categoria_new') }}">+ Nou categoria</a>
+
+        {% if searchTerm is defined %}
+          <p>Resultats de cerca per: <strong>{{ searchTerm }}</strong></p>
+          <a href="{{ path('categoria_list') }}">x Esborrar resultats</a>
+        {% endif %}
+
+            {% for message in app.flashes('notice') %}
+                  <strong>Success!</strong> {{ message }}
+            {% endfor %}
+
+            <table CELLSPACING=0 >
+                <thead>
+                    <tr class="titulos">
+                        <th>id</th><th colspan="2">Nom</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for categoria in categorias %}
+                        <tr class="producto"  >
+                        
+                            <td >{{categoria.id}}</td><td>{{categoria.nom}}</td>
+                            
+                             {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                             <td>
+                                <a href="{{ path('categoria_edit', {'id': categoria.id}) }}">Editar</a>
+                                <a href="{{ path('categoria_delete', {'id': categoria.id}) }}">Eliminar</a>
+                             </td>
+                             {% endif %}
+                            
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="5">No hi ha categoria.</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            
+
+            <br>
+
+            
+
+
+{% endblock %}

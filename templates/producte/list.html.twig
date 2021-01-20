@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+{% block javascripts %}
+        <script src="{{ asset('codi.js') }}" type="text/javascript"></script>
+        {% endblock %}
+{% block title %}Llistat de productes{% endblock %}
+{% block body %}
+        <h1>Llistat de productes</h1>
+
+        <a href="{{ path('producte_new') }}">+ Nou producte</a>
+
+        {% if searchTerm is defined %}
+          <p>Filtrat per: <strong>{{ searchTerm }}</strong></p>
+          <a href="{{ path('producte_list') }}">x Esborrar resultats</a>
+        {% endif %}
+
+            {% for message in app.flashes('notice') %}
+                  <strong>Success!</strong> {{ message }}
+            {% endfor %}
+        <form name="form" method="post" action="{{ path('producte_filter') }}">
+                <div id="form">
+                    <select  name="term" >
+                        <option value="">Tots</option>
+                        {% for categoria in categories %}
+                        {% if searchTerm is defined %}
+
+                            {% if searchTerm == categoria.nom %}
+                            <option selected value={{categoria.nom}}>{{categoria.nom}}</option>
+                            {% else %}
+                            <option value={{categoria.nom}}>{{categoria.nom}}</option>
+                            {% endif %}
+                        {% else %}
+                        <option value={{categoria.nom}}>{{categoria.nom}}</option>
+                        {% endif %}
+                        {% endfor %}
+                    </select>
+                        <button type="submit" id="form_save" name="save">Filtra</button>
+                </div>
+            </form>
+        <div class="productos">
+
+                 {% for producte in productes %}      
+
+            <div class="card" >
+                <img class="card-img-top foto" src="{{ asset('uploads/photos/' ~ producte.getBrochureFileName()) }}" alt="Card image cap">
+                <div class="card-body">
+                <h5 class="card-title">{{producte.nom}}</h5>
+                <p class="card-text">{{ producte.descripcio }}</p>
+                <p class="card-text">{{ producte.categoria.nom }}</p>
+                
+                {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}           
+                    <a  href="{{ path('producte_edit', {'id': producte.id}) }}" class="btn btn-primary cardbtn" id="paco" >Editar</a>
+                    <a onclick="return confirmElim();"href="{{ path('producte_delete', {'id': producte.id}) }}" class="btn btn-primary cardbtn">Eliminar</a>
+                {% endif %}
+
+                </div>
+            </div> 
+
+                        
+        {% else %}
+                      
+                            <p>No hi ha productes.</p>
+                        
+                    {% endfor %}
+        </div>
+       
+       
+         
+
+
+{% endblock %}
