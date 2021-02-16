@@ -25,7 +25,7 @@ class ApiController extends AbstractFOSRestController
 
 // el camp imatge que hem de subministrar al client es la URL que serveix la imatge
       foreach ($productes as $producte) {
-        $producte->setBrochureFilename('/api/producteImatge/'.$producte->getId());
+        $producte->setBrochureFilename('http://localhost/M14/M14_Ac3/public/index.php/api/producteImatge/'.$producte->getId());
       }
       
       $data = $productes;
